@@ -4,17 +4,10 @@ import createError from 'http-errors'
 import logger from 'morgan'
 import connectMongoose from './lib/connectMongoose.js'
 import * as homeController from './controllers/homeController.js'
-import Product from './models/Product.js'
-import User from './models/User.js'
 
 // connect with database
 await connectMongoose()  
 console.log('Connected to MongoDB')
-
-// test insert user
-const user = new User({ email: 'user@email.com', password: await User.hashPassword('1234') })
-await user.save()
-/* const product = new Product({ name: "mando de la play", owner: user, price: 12, image: 'shdhw',  tags: []}) */
 
 const app = express()
 

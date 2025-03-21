@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env PORT=3000 NODEPOP_ENV=development nodemon server.js",
-    "start": "cross-env NODEPOP_ENV=production node server.js"
+    "start": "cross-env NODEPOP_ENV=production node server.js",
+    "initDB": "node initDB.js"
   },
   "keywords": [],
   "author": "",
