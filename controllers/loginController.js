@@ -21,3 +21,14 @@ export async function login(req, res, next) {
         next(error)
     }
 }
+
+export function logout(req, res, next) {
+    req.session.regenerate(err => {
+        if (err) {
+            next(err)
+            return
+        } 
+
+        res.redirect('/login')
+    })
+}
