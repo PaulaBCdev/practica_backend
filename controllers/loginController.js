@@ -13,6 +13,8 @@ export async function login(req, res, next) {
             return
         }
 
+        req.session.userId = user.id
+
         res.redirect('/')
         
     } catch (error) {

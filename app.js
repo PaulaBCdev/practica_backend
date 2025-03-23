@@ -10,9 +10,12 @@ console.log('Connected to MongoDB')
 
 const app = express()
 
+// MIDDLEWARES
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(import.meta.dirname, 'public')))
+
+app.use(sessionManager.middleware)
 
 // APPLICATION ROUTES
 // auth endpoints
