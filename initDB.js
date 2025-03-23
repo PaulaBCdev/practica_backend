@@ -15,6 +15,8 @@ if(answer.toLowerCase() !== 'y') {
 await initUsers()
 await initProducts()
 
+await connection.close()
+
 async function initUsers() {
     // delete all users
     const result = await User.deleteMany()
