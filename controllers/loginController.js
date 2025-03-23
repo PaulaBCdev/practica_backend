@@ -1,5 +1,11 @@
 import User from '../models/User.js'
 
+export function index(req, res, next) {
+    res.locals.error = ''
+    res.locals.email = ''
+    res.render('login')
+}
+
 export async function login(req, res, next) {
     try {
         const { email, password } = req.body
