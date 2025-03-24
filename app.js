@@ -37,6 +37,8 @@ app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.login)
 app.get('/logout', loginController.logout)
+app.get('/products/new', productsController.index)
+app.post('/products/new', productsController.createProduct)
 app.get('/products/delete/:productId', productsController.deleteProduct)
 
 

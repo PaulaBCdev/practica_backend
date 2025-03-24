@@ -7,9 +7,7 @@
         <% }else { %>
           <h2>Products</h2>
           <% products.forEach(product => { %>
-            <p>
-                <%= product.image %>
-            </p>
+            <img src="/images/<%= product.image %>" alt="<%= product.name %> image">
             <p>
               <%= product.name %>
             </p>
