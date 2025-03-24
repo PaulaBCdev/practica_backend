@@ -3,7 +3,9 @@ import express from 'express'
 import createError from 'http-errors'
 import logger from 'morgan'
 import connectMongoose from './lib/connectMongoose.js'
+import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
+import * as productsController from './controllers/productsController.js'
 import * as sessionManager from './lib/sessionManager.js'
 
 
@@ -27,12 +29,15 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(import.meta.dirname, 'public')))
 
 app.use(sessionManager.middleware)
+app.use(sessionManager.useSessionInViews)
 
 
 // APPLICATION ROUTES
-// auth endpoints
+app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.login)
+app.get('/logout', loginController.logout)
+app.get('/products/delete/:productId', productsController.deleteProduct)
 
 
 // catch 404 and send error
