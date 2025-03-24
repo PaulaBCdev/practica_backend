@@ -15,7 +15,7 @@ export async function login(req, res, next) {
         if (!user || !(await user.comparePassword(password))) {
             res.locals.error = 'Invalid credentials'
             res.locals.email = email
-            /* res.render('login') */
+            res.render('login')
             return
         }
 
@@ -35,6 +35,6 @@ export function logout(req, res, next) {
             return
         } 
 
-        res.redirect('/login')
+        res.redirect('/')
     })
 }

@@ -18,6 +18,8 @@ const app = express()
 app.set('views', 'views') 
 app.set('view engine', 'ejs')
 
+app.locals.appName = 'NodePop'
+
 
 // MIDDLEWARES
 app.use(logger('dev'))
