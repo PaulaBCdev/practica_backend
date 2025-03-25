@@ -14,6 +14,7 @@ import * as sessionManager from './lib/sessionManager.js'
 await connectMongoose()
 console.log('Connected to MongoDB')
 
+// use files with express
 const storage = multer.diskStorage({
     destination: 'public/images',
     filename: function (req, file, callback) {
@@ -25,7 +26,7 @@ const storage = multer.diskStorage({
     },
   });
 
-const upload = multer({ storage })  // use images with express
+const upload = multer({ storage })  
 const app = express()
 
 

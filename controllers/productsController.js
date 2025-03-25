@@ -1,3 +1,4 @@
+import fs from 'node:fs'
 import Product from '../models/Product.js'
 
 export function index(req, res, next) {
@@ -28,8 +29,16 @@ export async function deleteProduct(req, res, next) {
         const userId = req.session.userId
         const productId = req.params.productId
 
-        await Product.deleteOne({ _id: productId, owner: userId })
+        // delete product in database and image in server
+        const deletedProduct = await Product.findOneAndDelete({ _id: productId, owner: userId })
+        fs.unlink(`public/images/${deletedProduct.image}`, (err) => {
+            if (err) {
+              console.error(`Error removing file: ${err}`);
+              return;
+            }
+        })
 
+        
         res.redirect('/')
 
     } catch (error) {
