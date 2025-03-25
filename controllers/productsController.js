@@ -7,10 +7,11 @@ export function index(req, res, next) {
 
 export async function createProduct(req, res, next) {
     try {
-        const { name, price, image, tags } = req.body
+        const { name, price, tags } = req.body
+        const { filename } = req.file
         const userId = req.session.userId
         
-        const product = new Product({ name, price, image, tags, owner: userId})
+        const product = new Product({ name, price, image: filename, tags, owner: userId})
         
         await product.save()
         

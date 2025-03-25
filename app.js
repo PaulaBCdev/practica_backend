@@ -1,5 +1,6 @@
 import path from 'node:path'
 import express from 'express'
+import multer from 'multer'
 import createError from 'http-errors'
 import logger from 'morgan'
 import connectMongoose from './lib/connectMongoose.js'
@@ -13,6 +14,18 @@ import * as sessionManager from './lib/sessionManager.js'
 await connectMongoose()
 console.log('Connected to MongoDB')
 
+const storage = multer.diskStorage({
+    destination: 'public/images',
+    filename: function (req, file, callback) {
+        console.log(req.file)
+        const str = file.originalname.split(".")
+        const extention = str[1]
+        const suffix = Date.now()
+      callback(null, `${str[0]}_${suffix}.${extention}`);
+    },
+  });
+
+const upload = multer({ storage })  // use images with express
 const app = express()
 
 
@@ -38,7 +51,7 @@ app.get('/login', loginController.index)
 app.post('/login', loginController.login)
 app.get('/logout', loginController.logout)
 app.get('/products/new', productsController.index)
-app.post('/products/new', productsController.createProduct)
+app.post('/products/new', upload.single('image'), productsController.createProduct)
 app.get('/products/delete/:productId', productsController.deleteProduct)
 
 

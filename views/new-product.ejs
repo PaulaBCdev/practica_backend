@@ -3,7 +3,7 @@
 <div class="container">
     <h1>New Product</h1>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
   
       <div class="mb-3">
         <label for="productName" class="form-label">Name</label>
@@ -28,25 +28,25 @@
       <div class="mb-3">
         <p class="mb-1">Tags</p>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="tagGaming">
+            <input class="form-check-input" name="tags" type="checkbox" value="gaming" id="tagGaming">
             <label class="form-check-label" for="tagGaming">
               Gaming
             </label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="tagClothes" checked>
+            <input class="form-check-input" name="tags" type="checkbox" value="clothes" id="tagClothes" checked>
             <label class="form-check-label" for="tagClothes">
               Clothes
             </label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="tagToys" checked>
+            <input class="form-check-input" name="tags" type="checkbox" value="toys" id="tagToys" checked>
             <label class="form-check-label" for="tagToys">
               Toys
             </label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="tagOthers" checked>
+            <input class="form-check-input" name="tags" type="checkbox" value="others" id="tagOthers" checked>
             <label class="form-check-label" for="tagOthers">
               Others
             </label>
