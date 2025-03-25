@@ -9,6 +9,7 @@ export function index(req, res, next) {
 export async function login(req, res, next) {
     try {
         const { email, password } = req.body
+        const redir = req.query.redir
 
         const user = await User.findOne({ email: email })
 
@@ -21,7 +22,7 @@ export async function login(req, res, next) {
 
         req.session.userId = user.id
 
-        res.redirect('/')
+        res.redirect(redir ? redir : '/')
         
     } catch (error) {
         next(error)

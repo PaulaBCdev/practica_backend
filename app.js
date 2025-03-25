@@ -51,9 +51,9 @@ app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.login)
 app.get('/logout', loginController.logout)
-app.get('/products/new', productsController.index)
-app.post('/products/new', upload.single('image'), productsController.createProduct)
-app.get('/products/delete/:productId', productsController.deleteProduct)
+app.get('/products/new', sessionManager.guard, productsController.index)
+app.post('/products/new', sessionManager.guard, upload.single('image'), productsController.createProduct)
+app.get('/products/delete/:productId', sessionManager.guard, productsController.deleteProduct)
 
 
 // catch 404 and send error
