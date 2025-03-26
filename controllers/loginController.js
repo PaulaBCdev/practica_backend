@@ -11,7 +11,7 @@ export async function login(req, res, next) {
         const { email, password } = req.body
         const redir = req.query.redir
 
-        const user = await User.findOne({ email: email })
+        const user = await User.findOne({ email })
 
         if (!user || !(await user.comparePassword(password))) {
             res.locals.error = 'Invalid credentials'
