@@ -53,7 +53,7 @@ app.get('/login', loginController.index)
 app.post('/login', loginController.login)
 app.get('/logout', loginController.logout)
 app.get('/products/new', sessionManager.guard, productsController.index)
-app.post('/products/new', sessionManager.guard,upload.single('image'), productsController.validateNewProduct, productsController.createProduct)
+app.post('/products/new', sessionManager.guard, upload.single('image'), productsController.validateNewProduct, productsController.createProduct)
 app.get('/products/delete/:productId', sessionManager.guard, productsController.deleteProduct)
 
 
