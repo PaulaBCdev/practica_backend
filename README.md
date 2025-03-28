@@ -5,7 +5,7 @@ Each user can only view and manage their own products, which allows to practice 
 
 ## Database
 
-The database created for this project is called **'nodepop'**. If you'd like to use your own database, you can change the name in `/lib/connectMongoose.js`.
+The database created for this project is called **'nodepop'**. If you'd like to use your own database, you can change the name in `/lib/connectMongoose.js` and `/lib/sessionManager.js`.
 
 ## Installation
 
@@ -35,7 +35,7 @@ Start the server in production:
 npm start
 ```
 
-## Main endpoints
+## Endpoints
 
 ### Not proptected endpoints
 
@@ -50,6 +50,7 @@ GET /
 Login
 
 ```sh
+GET /login
 POST /login
 ```
 
@@ -66,6 +67,7 @@ The user needs to authenticate to access these endpoints. If they try to access 
 Create new product
 
 ```sh
+GET /products/new
 POST /products/new
 ```
 
